@@ -1,0 +1,2342 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Vmart - Quality cleaning products for homes, offices and everyday cleaning needs." name="description"/>
+  <title>
+   Vmart | Cleaning Products
+  </title>
+  <!-- =========================
+         BOOTSTRAP CSS
+    ========================== -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <!-- =========================
+         BOOTSTRAP ICONS
+    ========================== -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet"/>
+  <!-- =========================
+         GOOGLE FONT
+    ========================== -->
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Manrope:wght@500;600;700;800&amp;display=swap" rel="stylesheet"/>
+  <!-- =========================
+         CUSTOM CSS
+    ========================== -->
+  <style>
+   /* =====================================
+           GLOBAL
+        ===================================== */
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: "DM Sans", sans-serif;
+            background: #f7faf8;
+            color: #c42727;
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: "Manrope", sans-serif;
+        }
+
+        section {
+            scroll-margin-top: 90px;
+        }
+
+        ::selection {
+            background: #f10707;
+            color: white;
+        }
+
+
+        /* =====================================
+           SCROLL PROGRESS
+        ===================================== */
+
+        #scrollProgress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            width: 0%;
+            background: linear-gradient(
+                90deg,
+                #8f0b0b,
+                #c32020,
+                #df7d7d
+            );
+            z-index: 9999;
+        }
+
+
+        /* =====================================
+           NAVBAR
+        ===================================== */
+
+        .navbar {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            padding: 20px 0;
+            transition: all 0.4s ease;
+        }
+
+        .navbar.scrolled {
+            background: #ed3237;
+            backdrop-filter: blur(15px);
+            padding: 11px 0;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .navbar-brand {
+            padding: 0;
+            margin-right: 28px;
+            line-height: 1;
+        }
+
+        .vmart-logo {
+            width: auto;
+            height: 58px;
+            display: block;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        .navbar-nav .nav-link {
+            color: rgba(255,255,255,0.82) !important;
+            font-weight: 500;
+            margin: 0 6px;
+            padding: 8px 12px !important;
+            position: relative;
+            transition: 0.3s;
+        }
+
+        .navbar-nav .nav-link:hover,
+        .navbar-nav .nav-link.active {
+            color: #ffffff !important;
+        }
+
+        .navbar-nav .nav-link::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            bottom: 1px;
+            width: 0;
+            height: 2px;
+            background: #e46264;
+            transform: translateX(-50%);
+            transition: 0.3s;
+        }
+
+        .navbar-nav .nav-link:hover::after,
+        .navbar-nav .nav-link.active::after {
+            width: 55%;
+        }
+
+        .contact-nav {
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            border-radius: 50px;
+            padding-left: 20px !important;
+            padding-right: 20px !important;
+            margin-left: 10px !important;
+        }
+
+        .contact-nav:hover {
+            background: #c9242b;
+            border-color: rgba(255,255,255,0.65);
+            color: white !important;
+        }
+
+
+        /* =====================================
+           HERO
+        ===================================== */
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            color: white;
+
+            background:
+                linear-gradient(
+                    115deg,
+                    rgba(30, 3, 3, 0.98),
+                    rgba(71, 7, 7, 0.94),
+                    rgba(116, 15, 15, 0.88)
+                );
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: rgba(68, 214, 121, 0.10);
+            top: -250px;
+            right: -150px;
+            animation: floatingCircle 8s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            border: 70px solid rgba(255,255,255,0.03);
+            bottom: -200px;
+            left: -100px;
+            animation: floatingCircle 10s ease-in-out infinite reverse;
+        }
+
+        @keyframes floatingCircle {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-35px);
+            }
+
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding-top: 80px;
+        }
+
+        .hero-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.09);
+            border: 1px solid rgba(255,255,255,0.18);
+            border-radius: 50px;
+            padding: 9px 18px;
+            color: #e88080;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 25px;
+            backdrop-filter: blur(10px);
+            animation: fadeDown 0.9s ease;
+        }
+
+        .hero h1 {
+            font-size: clamp(45px, 6vw, 78px);
+            line-height: 1.04;
+            font-weight: 800;
+            letter-spacing: -4px;
+            margin-bottom: 25px;
+            animation: fadeUp 1s ease 0.2s both;
+        }
+
+        .hero h1 span {
+            color: #e66578;
+        }
+
+        .hero-description {
+            max-width: 650px;
+            color: rgba(255,255,255,0.73);
+            font-size: 18px;
+            line-height: 1.8;
+            animation: fadeUp 1s ease 0.4s both;
+        }
+
+        .hero-buttons {
+            margin-top: 35px;
+            animation: fadeUp 1s ease 0.6s both;
+        }
+
+        .btn-green {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #ad1919;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 14px 27px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: 0.35s;
+        }
+
+        .btn-green:hover {
+            background: #c92929;
+            color: white;
+            transform: translateY(-4px);
+            box-shadow: 0 15px 35px rgba(24,169,87,0.35);
+        }
+
+        .btn-white-outline {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: white;
+            border: 1px solid rgba(255,255,255,0.4);
+            border-radius: 50px;
+            padding: 13px 27px;
+            font-weight: 600;
+            text-decoration: none;
+            margin-left: 10px;
+            transition: 0.35s;
+        }
+
+        .btn-white-outline:hover {
+            background: white;
+            color: #5b0b0b;
+            transform: translateY(-4px);
+        }
+
+
+        /* =====================================
+           HERO VISUAL
+        ===================================== */
+
+        .hero-visual {
+            position: relative;
+            z-index: 2;
+            padding-top: 80px;
+        }
+
+        .cleaning-showcase {
+            min-height: 470px;
+            border-radius: 35px;
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,0.15),
+                    rgba(255,255,255,0.04)
+                );
+            border: 1px solid rgba(255,255,255,0.18);
+            backdrop-filter: blur(15px);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 35px 80px rgba(0,0,0,0.25);
+            animation: showcaseFloat 5s ease-in-out infinite;
+        }
+
+        @keyframes showcaseFloat {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+
+        }
+
+        .showcase-title {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            color: rgba(255,255,255,0.7);
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .main-clean-icon {
+            position: absolute;
+            left: 50%;
+            top: 47%;
+            transform: translate(-50%, -50%);
+            font-size: 130px;
+            filter: drop-shadow(
+                0 20px 20px rgba(0,0,0,0.15)
+            );
+        }
+
+        .bubble {
+            position: absolute;
+            border-radius: 50%;
+            border: 1px solid rgba(255,255,255,0.3);
+            background: rgba(255,255,255,0.08);
+        }
+
+        .bubble-one {
+            width: 65px;
+            height: 65px;
+            top: 70px;
+            right: 70px;
+            animation: bubbleMove 5s infinite;
+        }
+
+        .bubble-two {
+            width: 30px;
+            height: 30px;
+            bottom: 100px;
+            left: 70px;
+            animation: bubbleMove 4s infinite reverse;
+        }
+
+        .bubble-three {
+            width: 45px;
+            height: 45px;
+            bottom: 55px;
+            right: 100px;
+            animation: bubbleMove 6s infinite;
+        }
+
+        @keyframes bubbleMove {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+
+        }
+
+        .showcase-bottom {
+            position: absolute;
+            bottom: 25px;
+            left: 25px;
+            right: 25px;
+            padding: 20px;
+            border-radius: 20px;
+            background: rgba(255,255,255,0.09);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .showcase-bottom strong {
+            font-size: 18px;
+        }
+
+        .showcase-bottom small {
+            display: block;
+            color: rgba(255,255,255,0.6);
+            margin-top: 3px;
+        }
+
+
+        /* =====================================
+           GENERAL SECTIONS
+        ===================================== */
+
+        .section {
+            padding: 105px 0;
+        }
+
+        .section-label {
+            color: #931515;
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-size: clamp(32px, 4vw, 52px);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -2px;
+            margin-bottom: 20px;
+        }
+
+        .section-description {
+            color: #766868;
+            line-height: 1.8;
+            max-width: 680px;
+        }
+
+
+        /* =====================================
+           ABOUT
+        ===================================== */
+
+        .about-section {
+            background: #ffffff;
+        }
+
+        .about-visual {
+            min-height: 450px;
+            border-radius: 30px;
+            background:
+                linear-gradient(
+                    135deg,
+                    #4e0607,
+                    #941118,
+                    #d67279
+                );
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-visual::before {
+            content: "";
+            position: absolute;
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.07);
+            top: -100px;
+            right: -100px;
+        }
+
+        .about-visual::after {
+            content: "";
+            position: absolute;
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.05);
+            bottom: -100px;
+            left: -80px;
+        }
+
+        .about-clean-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -55%);
+            font-size: 150px;
+        }
+
+        .about-card {
+            position: absolute;
+            bottom: 25px;
+            right: 25px;
+            background: rgba(255,255,255,0.95);
+            padding: 22px;
+            border-radius: 18px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .about-card h5 {
+            margin-bottom: 3px;
+            font-weight: 800;
+        }
+
+        .about-card small {
+            color: #756666;
+        }
+
+        .about-content {
+            padding-left: 25px;
+        }
+
+        .check-list {
+            list-style: none;
+            padding: 0;
+            margin: 30px 0 0;
+        }
+
+        .check-list li {
+            margin-bottom: 17px;
+            color: #635355;
+        }
+
+        .check-list i {
+            color: #a91827;
+            margin-right: 10px;
+        }
+
+
+        /* =====================================
+           CATEGORY FILTER
+        ===================================== */
+
+        .products-section {
+            background: #f0f8f3;
+        }
+
+        .filter-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin: 35px 0 45px;
+        }
+
+        .filter-btn {
+            border: 1px solid #cfe1d5;
+            background: white;
+            color: #604141;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: #9b1520;
+            color: white;
+            border-color: #9b1522;
+        }
+
+
+        /* =====================================
+           PRODUCT CARDS
+        ===================================== */
+
+        .product-item {
+            transition: 0.45s ease;
+        }
+
+        .product-item.hidden {
+            display: none;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 23px;
+            overflow: hidden;
+            height: 100%;
+            border: 1px solid #e0ebe3;
+            transition: 0.4s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 55px rgba(26,74,45,0.13);
+            border-color: #d38b8f;
+        }
+
+        .product-image {
+            height: 205px;
+            background:
+                linear-gradient(
+                    135deg,
+                    #dff7e6,
+                    #f7fff9
+                );
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-image::after {
+            content: "";
+            position: absolute;
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            background: rgba(183, 35, 57, 0.08);
+            right: -30px;
+            top: -40px;
+        }
+        .product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: 0.5s ease;
+}
+
+.product-card:hover .product-image img {
+    transform: scale(1.08);
+}
+
+        .product-card:hover .product-image {
+            background:
+                linear-gradient(
+                    135deg,
+                    #cef2d8,
+                    #effcf3
+                );
+        }
+
+        .product-body {
+            padding: 27px;
+        }
+
+        .product-category {
+            color: #9b1515;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1.4px;
+            font-weight: 800;
+        }
+
+        .product-body h4 {
+            font-size: 21px;
+            font-weight: 800;
+            margin: 8px 0 10px;
+        }
+
+        .product-body p {
+            color: #807171;
+            line-height: 1.7;
+            margin-bottom: 0;
+        }
+
+
+        /* =====================================
+           WHY VMART
+        ===================================== */
+
+        .feature-card {
+            background: white;
+            border: 1px solid #e2ebe5;
+            border-radius: 22px;
+            padding: 32px;
+            height: 100%;
+            transition: 0.4s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-9px);
+            border-color: #c97b7e;
+            box-shadow: 0 20px 45px rgba(90, 25, 33, 0.1);
+        }
+
+        .feature-icon {
+            width: 65px;
+            height: 65px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 18px;
+            background: #def7e6;
+            color: #9b1519;
+            font-size: 28px;
+            margin-bottom: 23px;
+            transition: 0.4s;
+        }
+
+        .feature-card:hover .feature-icon {
+            background: #9b1527;
+            color: white;
+            transform: rotate(-5deg) scale(1.08);
+        }
+
+        .feature-card h4 {
+            font-size: 20px;
+            font-weight: 800;
+        }
+
+        .feature-card p {
+            color: #718078;
+            line-height: 1.7;
+        }
+
+
+        /* =====================================
+           STATS
+        ===================================== */
+
+        .stats-section {
+            background:
+                linear-gradient(
+                    120deg,
+                    #350608,
+                    #73080c
+                );
+            color: white;
+            padding: 80px 0;
+        }
+
+        .stat-box {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .stat-number {
+            font-size: 50px;
+            font-weight: 800;
+            color: #e36a78;
+            line-height: 1;
+            margin-bottom: 12px;
+        }
+
+        .stat-label {
+            color: rgba(255, 255, 255, 0.65);
+        }
+
+
+        /* =====================================
+           CLEANING TIPS
+        ===================================== */
+
+        .tips-section {
+            background: white;
+        }
+
+        .tip-card {
+            border: 1px solid #e2ebe5;
+            border-radius: 20px;
+            padding: 30px;
+            height: 100%;
+            transition: 0.4s;
+            background: #fff;
+        }
+
+        .tip-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 45px rgba(30,80,50,0.09);
+        }
+
+        .tip-number {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #ddf6e5;
+            color: #9b1515;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+        .tip-card h4 {
+            font-weight: 800;
+        }
+        .tip-card p {
+            color: #807171;
+            line-height: 1.7;
+        }
+        .cta-section {
+            padding: 90px 0;
+        }
+        .cta-box {
+            background:
+                linear-gradient(
+                    125deg,
+                    #730808,
+                    #aa181d
+                );
+            border-radius: 32px;
+            padding: 70px 40px;
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-box::before {
+            content: "";
+            position: absolute;
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            border: 70px solid rgba(255, 255, 255, 0.05);
+            top: -190px;
+            right: -90px;
+        }
+
+        .cta-box h2 {
+            position: relative;
+            font-size: clamp(32px, 4vw, 48px);
+            font-weight: 800;
+        }
+
+        .cta-box p {
+            position: relative;
+            color: rgba(255,255,255,0.75);
+            max-width: 600px;
+            margin: 15px auto 0;
+            line-height: 1.7;
+        }
+
+        .cta-btn {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            margin-top: 25px;
+            background: white;
+            color: #73080c;
+            padding: 14px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 800;
+            transition: 0.3s;
+        }
+
+        .cta-btn:hover {
+            color: #730813;
+            transform: translateY(-4px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.18);
+        }
+
+
+        /* =====================================
+           CONTACT
+        ===================================== */
+
+        .contact-section {
+            background: #1c1012;
+            color: white;
+        }
+
+        .contact-card {
+            height: 100%;
+            padding: 32px;
+            border-radius: 20px;
+            background: #261717;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: 0.4s;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-7px);
+            border-color: rgba(224, 93, 102, 0.4);
+        }
+
+        .contact-icon {
+            color: #e35e60;
+            font-size: 29px;
+            margin-bottom: 15px;
+        }
+
+        .contact-card h5 {
+            font-weight: 800;
+        }
+
+        .contact-card p {
+            color: #a39191;
+            margin-bottom: 0;
+            line-height: 1.7;
+        }
+
+
+        /* =====================================
+           FOOTER
+        ===================================== */
+
+        footer {
+            background: #100708;
+            color: #847474;
+            padding: 27px 0;
+        }
+
+        .footer-logo {
+            color: white;
+            font-family: "Manrope", sans-serif;
+            font-size: 23px;
+            font-weight: 800;
+        }
+
+
+        /* =====================================
+           BACK TO TOP
+        ===================================== */
+
+        #backTop {
+            position: fixed;
+            right: 25px;
+            bottom: 25px;
+            width: 48px;
+            height: 48px;
+            border: none;
+            border-radius: 50%;
+            background: #9b1515;
+            color: white;
+            font-size: 19px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 999;
+            transition: 0.3s;
+            box-shadow: 0 8px 25px rgba(21,155,80,0.3);
+        }
+
+        #backTop:hover {
+            background: #bb2028;
+            transform: translateY(-5px);
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(45px);
+            transition: opacity 0.8s ease,
+                        transform 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-55px);
+            transition: opacity 0.9s ease,
+                        transform 0.9s ease;
+        }
+
+        .reveal-left.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(55px);
+            transition: opacity 0.9s ease,
+                        transform 0.9s ease;
+        }
+
+        .reveal-right.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+
+        /* =====================================
+           HERO ANIMATIONS
+        ===================================== */
+
+        @keyframes fadeUp {
+
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        }
+
+        @keyframes fadeDown {
+
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        }
+
+
+        /* =====================================
+           MOBILE
+        ===================================== */
+
+        @media (max-width: 991px) {
+
+            .navbar {
+                background: #ed3237;
+            }
+
+            .navbar-nav {
+                padding-top: 15px;
+            }
+
+            .contact-nav {
+                display: inline-block;
+                margin: 10px 0 0 !important;
+            }
+
+            .hero {
+                padding: 120px 0 70px;
+            }
+
+            .hero-content {
+                padding-top: 30px;
+            }
+
+            .hero-visual {
+                padding-top: 55px;
+            }
+
+            .about-content {
+                padding-left: 0;
+                margin-top: 30px;
+            }
+
+        }
+
+
+        @media (max-width: 576px) {
+
+            .vmart-logo {
+                height: 50px;
+            }
+
+            .hero h1 {
+                font-size: 44px;
+                letter-spacing: -2.5px;
+            }
+
+            .hero-description {
+                font-size: 16px;
+            }
+
+            .hero-buttons .btn-green,
+            .hero-buttons .btn-white-outline {
+                width: 100%;
+                justify-content: center;
+                margin: 7px 0;
+            }
+
+            .cleaning-showcase {
+                min-height: 390px;
+            }
+
+            .main-clean-icon {
+                font-size: 100px;
+            }
+
+            .section {
+                padding: 75px 0;
+            }
+
+            .section-title {
+                letter-spacing: -1px;
+            }
+
+            .about-visual {
+                min-height: 350px;
+            }
+
+            .about-clean-icon {
+                font-size: 110px;
+            }
+
+            .filter-buttons {
+                gap: 7px;
+            }
+
+            .filter-btn {
+                padding: 8px 14px;
+                font-size: 13px;
+            }
+
+            .cta-box {
+                padding: 55px 25px;
+            }
+
+            .stat-number {
+                font-size: 40px;
+            }
+
+        }
+  </style>
+ </head>
+ <body>
+  <!-- =====================================
+         SCROLL PROGRESS
+    ====================================== -->
+  <div id="scrollProgress">
+  </div>
+  <!-- =====================================
+         NAVBAR
+    ====================================== -->
+  <nav class="navbar navbar-expand-lg" data-bs-theme="dark">
+   <div class="container">
+    <a class="navbar-brand" href="#home" aria-label="Vmart Home">
+     <img
+      src="data:image/png;base64,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"
+      alt="Vmart - Your Hygiene Our Priority"
+      class="vmart-logo">
+    </a>
+    <button class="navbar-toggler" data-bs-target="#mainNavigation" data-bs-toggle="collapse" type="button">
+     <span class="navbar-toggler-icon">
+     </span>
+    </button>
+    <div class="collapse navbar-collapse" id="mainNavigation">
+     <ul class="navbar-nav ms-auto align-items-lg-center">
+      <li class="nav-item">
+       <a class="nav-link active" href="#home">
+        Home
+       </a>
+      </li>
+      <li class="nav-item">
+       <a class="nav-link" href="#about">
+        About
+       </a>
+      </li>
+      <li class="nav-item">
+       <a class="nav-link" href="#products">
+        Products
+       </a>
+      </li>
+      <li class="nav-item">
+       <a class="nav-link" href="#why">
+        Why Vmart
+       </a>
+      </li>
+      <li class="nav-item">
+       <a class="nav-link" href="#tips">
+        Cleaning Tips
+       </a>
+      </li>
+      <li class="nav-item">
+       <a class="nav-link contact-nav" href="#contact">
+        Contact
+       </a>
+      </li>
+     </ul>
+    </div>
+   </div>
+  </nav>
+  <!-- =====================================
+         HERO
+    ====================================== -->
+  <section class="hero" id="home">
+   <div class="container">
+    <div class="row align-items-center">
+     <div class="col-lg-7 hero-content">
+      <div class="hero-tag">
+       <i class="bi bi-stars">
+       </i>
+       Quality Cleaning Products
+      </div>
+      <h1>
+       Clean Better.
+       <br/>
+       Live
+       <span>
+        Better.
+       </span>
+      </h1>
+      <p class="hero-description">
+       Discover reliable cleaning products
+                        designed to keep your home, workplace
+                        and everyday spaces fresh, clean and
+                        hygienic.
+      </p>
+      <div class="hero-buttons">
+       <a class="btn-green" href="#products">
+        Explore Products
+        <i class="bi bi-arrow-down">
+        </i>
+       </a>
+       <a class="btn-white-outline" href="#about">
+        Discover Vmart
+        <i class="bi bi-arrow-right">
+        </i>
+       </a>
+      </div>
+     </div>
+     <div class="col-lg-5 hero-visual">
+      <div class="cleaning-showcase">
+       <div class="showcase-title">
+        VMART CLEANING COLLECTION
+       </div>
+       <div class="bubble bubble-one">
+       </div>
+       <div class="bubble bubble-two">
+       </div>
+       <div class="bubble bubble-three">
+       </div>
+       <div class="main-clean-icon">
+        🧴
+       </div>
+       <div class="showcase-bottom">
+        <strong>
+         Everyday Cleaning Essentials
+        </strong>
+        <small>
+         Products for a cleaner,
+                                fresher environment
+        </small>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section>
+  <!-- =====================================
+         ABOUT
+    ====================================== -->
+  <section class="section about-section" id="about">
+   <div class="container">
+    <div class="row align-items-center g-5">
+     <div class="col-lg-6 reveal-left">
+      <div class="about-visual">
+       <div class="about-clean-icon">
+        🧽
+       </div>
+       <div class="about-card">
+        <h5>
+         <i class="bi bi-check-circle-fill text-success">
+         </i>
+         Clean Spaces
+        </h5>
+        <small>
+         Everyday hygiene made easier
+        </small>
+       </div>
+      </div>
+     </div>
+     <div class="col-lg-6 reveal-right">
+      <div class="about-content">
+       <div class="section-label">
+        About Vmart
+       </div>
+       <h2 class="section-title">
+        Everything you need
+                            for a cleaner space.
+       </h2>
+       <p class="section-description">
+        Vmart is a cleaning-products shop
+                            focused on providing a wide range
+                            of products for everyday cleaning
+                            and hygiene needs.
+       </p>
+       <p class="section-description">
+        From floors and bathrooms to
+                            kitchens, glass surfaces and
+                            laundry, Vmart brings cleaning
+                            essentials together in one place.
+       </p>
+       <ul class="check-list">
+        <li>
+         <i class="bi bi-check-circle-fill">
+         </i>
+         Cleaning products for everyday use
+        </li>
+        <li>
+         <i class="bi bi-check-circle-fill">
+         </i>
+         Products for different cleaning needs
+        </li>
+        <li>
+         <i class="bi bi-check-circle-fill">
+         </i>
+         Home and workplace cleaning solutions
+        </li>
+        <li>
+         <i class="bi bi-check-circle-fill">
+         </i>
+         Focus on cleanliness and hygiene
+        </li>
+       </ul>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section>
+  <!-- =====================================
+         PRODUCTS
+    ====================================== -->
+  <section class="section products-section" id="products">
+   <div class="container">
+    <div class="text-center reveal">
+     <div class="section-label">
+      Our Products
+     </div>
+     <h2 class="section-title">
+      Cleaning products
+                    for every need
+     </h2>
+     <p class="section-description mx-auto">
+      Explore our cleaning product categories
+                    and discover solutions for different areas
+                    of your home and workplace.
+     </p>
+    </div>
+    <!-- FILTER BUTTONS -->
+    <div class="filter-buttons reveal">
+     <button class="filter-btn active" data-filter="all">
+      All Products
+     </button>
+     <button class="filter-btn" data-filter="home">
+      Home Cleaning
+     </button>
+     <button class="filter-btn" data-filter="kitchen">
+      Kitchen
+     </button>
+     <button class="filter-btn" data-filter="bathroom">
+      Bathroom
+     </button>
+     <button class="filter-btn" data-filter="laundry">
+      Laundry
+     </button>
+     <button class="filter-btn" data-filter="accessories">
+      Accessories
+     </button>
+    </div>
+    <!-- PRODUCT GRID -->
+    <div class="row g-4">
+     <!-- PRODUCT 1 -->
+     <div class="col-md-6 col-lg-4 product-item reveal" data-category="home">
+      <div class="product-card">
+       <div class="product-image">
+        🧹
+       </div>
+       <div class="product-body">
+        <div class="product-category">
+         Home Cleaning
+        </div>
+        <h4>
+         Floor Cleaners
+        </h4>
+        <p>
+         Cleaning solutions designed
+                                to help remove dirt, dust and
+                                everyday stains from floors.
+        </p>
+       </div>
+      </div>
+     </div>
+     <!-- PRODUCT 2 -->
+     <div class="col-md-6 col-lg-4 product-item reveal" data-category="bathroom">
+      <div class="product-card">
+       <div class="product-image">
+        🚽
+       </div>
+       <div class="product-body">
+        <div class="product-category">
+         Bathroom
+        </div>
+        <h4>
+         Toilet Cleaners
+        </h4>
+        <p>
+         Products for maintaining
+                                clean, fresh and hygienic
+                                toilet surfaces.
+        </p>
+       </div>
+      </div>
+     </div>
+     <!-- PRODUCT 3 -->
+     <div class="col-md-6 col-lg-4 product-item reveal" data-category="bathroom">
+      <div class="product-card">
+       <div class="product-image">
+        🚿
+       </div>
+       <div class="product-body">
+        <div class="product-category">
+         Bathroom
+        </div>
+        <h4>
+         Bathroom Cleaners
+        </h4>
+        <p>
+         Cleaning solutions for
+                                bathroom floors, walls,
+                                tiles and surfaces.
+        </p>
+       </div>
+      </div>
+     </div>
+     <!-- PRODUCT 4 -->
+     <div class="col-md-6 col-lg-4 product-item reveal" data-category="home">
+      <div class="product-card">
+       <div class="product-image">
+        🪟
+       </div>
+       <div class="product-body">
+        <div class="product-category">
+         Home Cleaning
+        </div>
+        <h4>
+         Glass Cleaners
+        </h4>
+        <p>
+         Products for keeping glass,
+                                mirrors and windows clean
+                                and clear.
+        </p>
+       </div>
+      </div>
+     </div>
+     <!-- PRODUCT 5 -->
+     <div class="col-md-6 col-lg-4 product-item reveal" data-category="kitchen">
+      <div class="product-card">
+       <div class="product-image">
+        🍽️
+       </div>
+       <div class="product-body">
+        <div class="product-category">
+         Kitchen
+        </div>
+        <h4>
+         Dishwashing Products
+        </h4>
+        <p>
+         Products designed to help
+                                clean dishes and remove
+                                grease and food residue.
+        </p>
+       </div>
+      </div>
+     </div>
+     <!-- PRODUCT 6 -->
+     <div class="col-md-6 col-lg-4 product-item reveal" data-category="kitchen">
+      <div class="product-card">
+       <div class="product-image">
+        🧴
+       </div>
+       <div class="product-body">
+        <div class="product-category">
+         Kitchen
+        </div>
+        <h4>
+         Kitchen Cleaners
+        </h4>
+        <p>
+         Cleaning solutions for
+                                counters, sinks, surfaces
+                                and kitchen areas.
+        </p>
+       </div>
+      </div>
+     </div>
+     <!-- PRODUCT 7 -->
+     <div class="col-md-6 col-lg-4 product-item reveal" data-category="laundry">
+      <div class="product-card">
+       <div class="product-image">
+        <img src="photo7.webp" alt="Laundry Products">
+       </div>
+       <div class="product-body">
+        <div class="product-category">
+         Laundry
+        </div>
+        <h4>
+         Laundry Products
+        </h4>
+        <p>
+         Products for washing clothes
+                                and maintaining fresh,
+                                clean fabrics.
+        </p>
+       </div>
+      </div>
+     </div>
+     <!-- PRODUCT 8 -->
+     <div class="col-md-6 col-lg-4 product-item reveal" data-category="home">
+      <div class="product-card">
+       <div class="product-image">
+        🧴
+       </div>
+       <div class="product-body">
+        <div class="product-category">
+         Home Cleaning
+        </div>
+        <h4>
+         Disinfectants
+        </h4>
+        <p>
+         Cleaning and hygiene products
+                                for suitable household
+                                surfaces.
+        </p>
+       </div>
+      </div>
+     </div>
+     <!-- PRODUCT 9 -->
+     <div class="col-md-6 col-lg-4 product-item reveal" data-category="accessories">
+      <div class="product-card">
+       <div class="product-image">
+        🧽
+       </div>
+       <div class="product-body">
+        <div class="product-category">
+         Accessories
+        </div>
+        <h4>
+         Cleaning Accessories
+        </h4>
+        <p>
+         Sponges, brushes, wipes and
+                                other useful cleaning
+                                essentials.
+        </p>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section>
+  <!-- =====================================
+         WHY VMART
+    ====================================== -->
+  <section class="section" id="why">
+   <div class="container">
+    <div class="text-center reveal">
+     <div class="section-label">
+      Why Vmart
+     </div>
+     <h2 class="section-title">
+      Making cleaning
+                    simple and convenient
+     </h2>
+     <p class="section-description mx-auto">
+      Vmart brings together essential cleaning
+                    products so you can find the right
+                    solution for your everyday needs.
+     </p>
+    </div>
+    <div class="row g-4 mt-4">
+     <div class="col-md-6 col-lg-3 reveal">
+      <div class="feature-card">
+       <div class="feature-icon">
+        <i class="bi bi-box-seam">
+        </i>
+       </div>
+       <h4>
+        Wide Product Range
+       </h4>
+       <p>
+        A variety of cleaning products
+                            for different areas and
+                            cleaning requirements.
+       </p>
+      </div>
+     </div>
+     <div class="col-md-6 col-lg-3 reveal">
+      <div class="feature-card">
+       <div class="feature-icon">
+        <i class="bi bi-stars">
+        </i>
+       </div>
+       <h4>
+        Quality Focus
+       </h4>
+       <p>
+        Products selected around
+                            practical everyday cleaning
+                            requirements.
+       </p>
+      </div>
+     </div>
+     <div class="col-md-6 col-lg-3 reveal">
+      <div class="feature-card">
+       <div class="feature-icon">
+        <i class="bi bi-house-heart">
+        </i>
+       </div>
+       <h4>
+        Everyday Use
+       </h4>
+       <p>
+        Cleaning essentials suitable
+                            for regular home and workplace
+                            cleaning.
+       </p>
+      </div>
+     </div>
+     <div class="col-md-6 col-lg-3 reveal">
+      <div class="feature-card">
+       <div class="feature-icon">
+        <i class="bi bi-person-check">
+        </i>
+       </div>
+       <h4>
+        Helpful Service
+       </h4>
+       <p>
+        Information and assistance to
+                            help identify suitable cleaning
+                            products.
+       </p>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section>
+  <!-- =====================================
+         STATS
+    ====================================== -->
+  <section class="stats-section">
+   <div class="container">
+    <div class="row">
+     <div class="col-6 col-lg-3">
+      <div class="stat-box reveal">
+       <div class="stat-number" data-target="10">
+        0
+       </div>
+       <div class="stat-label">
+        Years of Experience
+       </div>
+      </div>
+     </div>
+     <div class="col-6 col-lg-3">
+      <div class="stat-box reveal">
+       <div class="stat-number" data-target="100">
+        0
+       </div>
+       <div class="stat-label">
+        Cleaning Solutions
+       </div>
+      </div>
+     </div>
+     <div class="col-6 col-lg-3">
+      <div class="stat-box reveal">
+       <div class="stat-number" data-target="10">
+        0
+       </div>
+       <div class="stat-label">
+        Product Categories
+       </div>
+      </div>
+     </div>
+     <div class="col-6 col-lg-3">
+      <div class="stat-box reveal">
+       <div class="stat-number" data-target="100">
+        0
+       </div>
+       <div class="stat-label">
+        Cleaning Focus
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section>
+  <!-- =====================================
+         CLEANING TIPS
+    ====================================== -->
+  <section class="section tips-section" id="tips">
+   <div class="container">
+    <div class="text-center reveal">
+     <div class="section-label">
+      Cleaning Tips
+     </div>
+     <h2 class="section-title">
+      Simple habits for
+                    better cleaning
+     </h2>
+     <p class="section-description mx-auto">
+      A few simple practices can make everyday
+                    cleaning easier and more effective.
+     </p>
+    </div>
+    <div class="row g-4 mt-4">
+     <div class="col-md-6 col-lg-4 reveal">
+      <div class="tip-card">
+       <div class="tip-number">
+        01
+       </div>
+       <h4>
+        Clean Regularly
+       </h4>
+       <p>
+        Regular cleaning helps prevent
+                            dirt and dust from building up
+                            on commonly used surfaces.
+       </p>
+      </div>
+     </div>
+     <div class="col-md-6 col-lg-4 reveal">
+      <div class="tip-card">
+       <div class="tip-number">
+        02
+       </div>
+       <h4>
+        Use the Right Product
+       </h4>
+       <p>
+        Choose a cleaning product that
+                            is suitable for the surface
+                            and cleaning task.
+       </p>
+      </div>
+     </div>
+     <div class="col-md-6 col-lg-4 reveal">
+      <div class="tip-card">
+       <div class="tip-number">
+        03
+       </div>
+       <h4>
+        Follow Product Instructions
+       </h4>
+       <p>
+        Always read and follow the
+                            instructions and safety
+                            information on cleaning products.
+       </p>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section>
+  <!-- =====================================
+         CTA
+    ====================================== -->
+  <section class="cta-section">
+   <div class="container">
+    <div class="cta-box reveal">
+     <h2>
+      Looking for a cleaning product?
+     </h2>
+     <p>
+      Explore our cleaning product categories
+                    or contact Vmart to learn more about
+                    our range.
+     </p>
+     <a class="cta-btn" href="#contact">
+      Contact Vmart
+      <i class="bi bi-arrow-right">
+      </i>
+     </a>
+    </div>
+   </div>
+  </section>
+  <!-- =====================================
+         CONTACT
+    ====================================== -->
+  <section class="section contact-section" id="contact">
+   <div class="container">
+    <div class="text-center reveal">
+     <div class="section-label">
+      Contact Vmart
+     </div>
+     <h2 class="section-title text-white">
+      We're here to help
+     </h2>
+     <p class="text-secondary">
+      Get in touch with us for more information
+                    about our cleaning products.
+     </p>
+    </div>
+    <div class="row g-4 mt-4">
+     <div class="col-md-4 reveal">
+      <div class="contact-card text-center">
+       <div class="contact-icon">
+        <i class="bi bi-telephone">
+        </i>
+       </div>
+       <h5>
+        Phone
+       </h5>
+       <p>
+        +91 91 42 42 52 52
+       </p>
+       <p>
+        0422 497 52 52
+       </p>
+      </div>
+     </div>
+     <div class="col-md-4 reveal">
+      <div class="contact-card text-center">
+       <div class="contact-icon">
+        <i class="bi bi-envelope">
+        </i>
+       </div>
+       <h5>
+        Email
+       </h5>
+       <p>
+        info@vmartv.com
+       </p>
+      </div>
+     </div>
+     <div class="col-md-4 reveal">
+      <div class="contact-card text-center">
+       <div class="contact-icon">
+        <i class="bi bi-geo-alt">
+        </i>
+       </div>
+       <h5>
+        Location
+       </h5>
+       <p>
+        Tamil Nadu, India
+       </p>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section>
+  <!-- =====================================
+         FOOTER
+    ====================================== -->
+  <footer>
+   <div class="container">
+    <div class="row align-items-center">
+     <div class="col-md-6">
+      <div class="footer-logo">
+       VMART
+       <span class="brand-dot">
+        .
+       </span>
+      </div>
+      <small>
+       Cleaning Products &amp; Hygiene Essentials
+      </small>
+     </div>
+     <div class="col-md-6 text-md-end mt-3 mt-md-0">
+      <small>
+       &copy; 2026 Vmart. All Rights Reserved.
+      </small>
+     </div>
+    </div>
+   </div>
+  </footer>
+  <!-- =====================================
+         BACK TO TOP
+    ====================================== -->
+  <button id="backTop">
+   <i class="bi bi-arrow-up">
+   </i>
+  </button>
+  <!-- =====================================
+         BOOTSTRAP JAVASCRIPT
+    ====================================== -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+  </script>
+  <!-- =====================================
+         CUSTOM JAVASCRIPT
+    ====================================== -->
+  <script>
+   /* =====================================
+           NAVBAR SCROLL EFFECT
+        ====================================== */
+
+        const navbar =
+            document.querySelector(".navbar");
+
+
+        window.addEventListener("scroll", function () {
+
+            if (window.scrollY > 60) {
+
+                navbar.classList.add("scrolled");
+
+            } else {
+
+                navbar.classList.remove("scrolled");
+
+            }
+
+        });
+
+
+        /* =====================================
+           SCROLL PROGRESS
+        ====================================== */
+
+        window.addEventListener("scroll", function () {
+
+            const scrollTop = window.scrollY;
+
+            const documentHeight =
+                document.documentElement.scrollHeight -
+                document.documentElement.clientHeight;
+
+            const progress =
+                (scrollTop / documentHeight) * 100;
+
+            document.getElementById(
+                "scrollProgress"
+            ).style.width = progress + "%";
+
+        });
+
+
+        /* =====================================
+           SCROLL REVEAL
+        ====================================== */
+
+        const revealElements =
+            document.querySelectorAll(
+                ".reveal, .reveal-left, .reveal-right"
+            );
+
+
+        const revealObserver =
+            new IntersectionObserver(
+
+                function (entries) {
+
+                    entries.forEach(function (entry) {
+
+                        if (entry.isIntersecting) {
+
+                            entry.target.classList.add(
+                                "active"
+                            );
+
+                        }
+
+                    });
+
+                },
+
+                {
+                    threshold: 0.12
+                }
+
+            );
+
+
+        revealElements.forEach(function (element) {
+
+            revealObserver.observe(element);
+
+        });
+
+
+        /* =====================================
+           ACTIVE NAVIGATION
+        ====================================== */
+
+        const sections =
+            document.querySelectorAll(
+                "section[id]"
+            );
+
+
+        const navLinks =
+            document.querySelectorAll(
+                ".nav-link"
+            );
+
+
+        window.addEventListener("scroll", function () {
+
+            let currentSection = "";
+
+
+            sections.forEach(function (section) {
+
+                const sectionTop =
+                    section.offsetTop - 180;
+
+
+                if (
+                    window.scrollY >= sectionTop
+                ) {
+
+                    currentSection =
+                        section.getAttribute("id");
+
+                }
+
+            });
+
+
+            navLinks.forEach(function (link) {
+
+                link.classList.remove("active");
+
+
+                if (
+                    link.getAttribute("href") ===
+                    "#" + currentSection
+                ) {
+
+                    link.classList.add("active");
+
+                }
+
+            });
+
+        });
+
+
+        /* =====================================
+           PRODUCT FILTER
+        ====================================== */
+
+        const filterButtons =
+            document.querySelectorAll(
+                ".filter-btn"
+            );
+
+
+        const products =
+            document.querySelectorAll(
+                ".product-item"
+            );
+
+
+        filterButtons.forEach(function (button) {
+
+
+            button.addEventListener(
+                "click",
+                function () {
+
+
+                    filterButtons.forEach(
+                        function (btn) {
+
+                            btn.classList.remove(
+                                "active"
+                            );
+
+                        }
+                    );
+
+
+                    button.classList.add(
+                        "active"
+                    );
+
+
+                    const filter =
+                        button.getAttribute(
+                            "data-filter"
+                        );
+
+
+                    products.forEach(
+                        function (product) {
+
+
+                            const category =
+                                product.getAttribute(
+                                    "data-category"
+                                );
+
+
+                            if (
+                                filter === "all" ||
+                                category === filter
+                            ) {
+
+                                product.classList.remove(
+                                    "hidden"
+                                );
+
+                            } else {
+
+                                product.classList.add(
+                                    "hidden"
+                                );
+
+                            }
+
+                        }
+                    );
+
+
+                }
+            );
+
+        });
+
+
+        /* =====================================
+           BACK TO TOP
+        ====================================== */
+
+        const backTop =
+            document.getElementById(
+                "backTop"
+            );
+
+
+        window.addEventListener(
+            "scroll",
+            function () {
+
+
+                if (
+                    window.scrollY > 500
+                ) {
+
+                    backTop.style.display =
+                        "flex";
+
+                } else {
+
+                    backTop.style.display =
+                        "none";
+
+                }
+
+            }
+        );
+
+
+        backTop.addEventListener(
+            "click",
+            function () {
+
+                window.scrollTo({
+
+                    top: 0,
+
+                    behavior: "smooth"
+
+                });
+
+            }
+        );
+
+
+        /* =====================================
+           ANIMATED COUNTERS
+        ====================================== */
+
+        const statsSection =
+            document.querySelector(
+                ".stats-section"
+            );
+
+
+        const counters =
+            document.querySelectorAll(
+                ".stat-number"
+            );
+
+
+        let countersStarted = false;
+
+
+        const counterObserver =
+            new IntersectionObserver(
+
+                function (entries) {
+
+
+                    if (
+                        entries[0].isIntersecting &&
+                        !countersStarted
+                ){
+
+
+                        countersStarted = true;
+
+
+                        counters.forEach(
+                            function (counter) {
+
+
+                                const target =
+                                    Number(
+                                        counter.getAttribute(
+                                            "data-target"
+                                        )
+                                    );
+
+
+                                let current = 0;
+
+
+                                const increment =
+                                    target / 70;
+
+
+                                function updateCounter() {
+
+
+                                    current += increment;
+
+
+                                    if (
+                                        current <
+                                        target
+                                    ) {
+
+
+                                        counter.innerText =
+                                            Math.ceil(
+                                                current
+                                            );
+
+
+                                        requestAnimationFrame(
+                                            updateCounter
+                                        );
+
+
+                                    } else {
+
+
+                                        counter.innerText =
+                                            target + "+";
+
+                                    }
+
+                                }
+
+
+                                updateCounter();
+
+
+                            }
+                        );
+
+
+                    }
+
+                },
+
+                {
+                    threshold: 0.5
+                }
+
+            );
+
+
+        counterObserver.observe(
+            statsSection
+        );
+
+
+        /* =====================================
+           CLOSE MOBILE MENU
+        ====================================== */
+
+        document.querySelectorAll(
+            ".nav-link"
+        ).forEach(
+            function (link) {
+
+
+                link.addEventListener(
+                    "click",
+                    function () {
+
+
+                        const menu =
+                            document.getElementById(
+                                "mainNavigation"
+                            );
+
+
+                        if (
+                            menu.classList.contains(
+                                "show"
+                            )
+                        ) {
+
+
+                            const collapse =
+                                bootstrap.Collapse
+                                .getInstance(menu);
+
+
+                            if (collapse) {
+
+                                collapse.hide();
+
+                            }
+
+                        }
+
+                    }
+                );
+
+
+            }
+        );
+  </script>
+ </body>
+</html>
